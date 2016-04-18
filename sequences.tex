@@ -1,0 +1,57 @@
+
+\section{Sequences}
+
+\subsection{Convergence definition}
+
+A sequence converges to $L$ if  $\forall ϵ>0, ∃N∈\setnaturals$ such that $∀n≥N, \abs{a_n-L} <ϵ$.
+
+
+
+\subsection{Monotonous and bounded sequences converge}
+
+\begin{property}{If a sequence $a_n$ is bounded above and is increasing, then it converges}
+    \begin{precondition}
+        \begin{itemize}
+            \item $∃L,∀n \; a_n \leq L$
+            \item $∀n \; a_n ≤ a_{n+1}$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\liman$ converges to the supremum of  $A=\setdef{a_n}{n ∈ \setnaturals}$.
+    \end{claim}
+    \begin{Proof}
+
+Since $a_n$ is bounded, then we have that $α = \sup A$ exists by properties of the real numbers.
+
+By definition of supremum, $∀ϵ>0,∃N$ such that:
+\begin{equation*}
+  α-ϵ<a_N<α
+\end{equation*}
+
+ Since $a_n$ is increasing:
+ \begin{equation*}
+∀n, \; N≤n, \; a_N ≤ a_n
+ \end{equation*}
+Also by definition:
+
+\begin{equation*}
+  ∀n, \; a_n ≤ α
+\end{equation*}
+
+Combining these two results, we get $∀n≥N,\;  α-ϵ<a_n<α$. This implies:
+\begin{equation*}
+  ∀n≥N,\;  α-a_n<ϵ
+\end{equation*}
+Again, since $a_n≤α$, we have:
+
+\begin{equation*}
+  ∀n, α-a_n= \abs{α-a_n}
+\end{equation*}
+Therefore, given $ϵ>0$, we have $∀n≥N,\;  \abs{α-a_n}<ϵ$, which by definition means:
+
+\begin{equation*}
+  \liman = α
+\end{equation*}
+
+    \end{Proof}
+\end{property}

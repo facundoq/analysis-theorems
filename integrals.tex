@@ -1,0 +1,229 @@
+\section{Integrals}
+
+\subsection{Definite integral definition}
+
+Preconditions:
+
+\begin{itemize}
+    \item $f(x) $ is bounded on $\intervalProper$
+    \item $f(x) ≥ 0$  $\intervalProper$
+\end{itemize}
+
+To arrive to the definition of the definite integral, we'll make a few other definitions in the way that prepare us to speak about subintervals of $\intervalProper$ and the maximum and minimum value of $f$ in those subintervals.
+
+Let $P_n$ be any complete partition of $\intervalProper$.
+
+$P_n=\setexp{\idots{I_1}{I_n}}$ is composed of $n$ non empty subintervals $I_k=\braces{x_k,x_{k+1}}$, $k=\idots{1}{n}$, such that
+
+\begin{equation*}
+\bigcup_{k=1}^{n} I_k = \intervalProper
+\end{equation*}
+Also, note that $a = x_1$ and  $b = x_n$, and $x_k>x_{k+1}$.
+
+Define the length of a subinterval $I_k$ as $|I_k|=x_{k+1}-x_k$.
+
+Now define, for each interval $I_k$, $f_k$ and $F_k$ as the smallest and greatest values of $f$ in that interval, which surely exists given the boundedness of $f$ in $\intervalProper$.
+Then define the sums $s_n$ and $S_n$:
+
+\begin{align*}
+s_n = \sum_{k=1}^{n}|I_k| f_k \\
+S_n = \sum_{k=1}^{n}|I_k| F_k
+\end{align*}
+Since $f_k≤f(x)≤F_k, \, \forall x \in $, then $s_n<S_n$. Now, if the following limits both exist:
+
+\begin{align*}
+s=\mylim{n}{+\infty}{s_n}
+S=\mylim{n}{+\infty}{S_n}
+\end{align*}
+
+Then we know $s≤S$. If these limits are the same, ie $s=S$, then $\int_a^b f(x) = s = S$.
+
+\subsection{Linearity of integrals}
+
+\begin{property}{p}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ is integrable on $\intervalProper$.
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $f$
+\end{claim}
+\begin{Proof}
+
+\begin{align*}
+f'(y)
+\end{align*}
+\end{Proof}
+\end{property}
+
+
+
+\subsection{Fundamental theorem of calculus (1 and 2)}
+
+\begin{property}{Fundamental theorem of calculus 1}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ continuous in $I=[a,b]$
+    \item $x ∈ I$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $G'(x)=(\int_a^x f(t) dt)'=f(x)$
+\end{claim}
+\begin{Proof}
+
+By definition of the derivative, we have:
+
+\begin{align*}
+G'(x) &= \derLimit{G(x+h)-G(x)}{h} \mathcomment{(here, $a<x+h<b$, which can be ensured because we are dealing with a limit)}
+\end{align*}
+
+Note that:
+\begin{align*}
+G(x+h)-G(x) &=  \int_a^{x+h} f(t) dt - \int_a^{x} f(t) dt
+\\ &= \int_x^{x+h} f(t) dt + \int_a^{x} f(t) dt - \int_a^{x} f(t) dt  \mathcomment{by linearity of the integral}
+\\ &= \int_x^{x+h} f(t) dt
+\end{align*}
+
+So actually we can simplify the derivative's limit to:
+
+\begin{align*}
+G'(x) &= \derLimit{\int_x^{x+h} f(t) dt}{h}
+\end{align*}
+
+
+Now, define $M_h$ as the maximum value $f$ takes in the interval $(x,x+h)$, and $m_h$ the minimum. Note that both these values depend on h. Also note that we know these exist because of the continuity of $f$. Then:
+
+\begin{align*}
+ \int_x^{x+h} m_h dt  &≤ \int_x^{x+h} f(t) dt ≤ \int_x^{x+h} M_h dt \mathcomment{ ($m_h ≤ f(t) ≤ M_h$)}
+ \\ m_h \int_x^{x+h}  dt  &≤ \int_x^{x+h} f(t) dt ≤ M_h \int_x^{x+h}  dt \mathcomment{$M_h$ and $m_h$ are constants wrt $t$}
+ \\ m_h h  &≤ \int_x^{x+h} f(t) dt ≤ M_h h
+\end{align*}
+
+If $h>0$, then:
+\begin{align*}
+ m_h h  &≤ \int_x^{x+h} f(t) dt ≤ M_h h
+ \\ m_h   &≤ \frac{\int_x^{x+h} f(t) dt}{h} ≤ M_h  \mathcomment{(dividing by h)}
+\end{align*}
+
+Taking the limit as $h → 0^+$:
+
+\begin{align*}
+ \limzp{h} m_h   &≤ \limzp{h} \frac{\int_x^{x+h} f(t) dt}{h} ≤ \limzp{h} M_h
+ \\ \limzp{h} m_h   &≤ G'(x) ≤ \limzp{h} M_h  &\mathcomment{by definition of G'(x) and previous derivation}
+\end{align*}
+
+Now, as $h → 0^+$, $x' ∈ (x,x+h)$ tends to $x$, therefore $\limzp{h} M_h = \limzp{h} m_h =f(x)$ This gives
+
+\begin{align*}
+ f(x) ≤ G'(x) ≤ f(x)
+\end{align*}
+
+Therefore, this implies the derivative $G'$ exists and furthermore that $G'(x)=f(x)$ (when $h>0$).
+
+If $h<0$, the same idea applies, except that when dividing by $h$ now the inequalities get inverted:
+
+\begin{align*}
+ m_h h &≤ \int_x^{x+h} f(t) dt ≤ M_h h
+ \\ m_h   &≥ \frac{\int_x^{x+h} f(t) dt}{h} ≥ M_h  \mathcomment{(dividing by h)}
+\end{align*}
+
+Taking the limit as $h → 0^-$:
+
+\begin{align*}
+ \limzn{h} m_h   &≥ \limzn{h} \frac{\int_x^{x+h} f(t) dt}{h} ≥ \limzn{h} M_h
+ \\ \limzn{h} m_h   &≥ G'(x) ≥ \limzn{h} M_h
+ \\ f(x) ≥ G'(x) ≥ f(x)
+\end{align*}
+
+Since both limits agree, we have $G'(x)=f(x)$.
+
+\end{Proof}
+\end{property}
+
+\begin{property}{Fundamental theorem of calculus, part 2}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ continuous in $I=[a,b]$
+    \item $G(x)=\int_a^x f(t) dt$
+    \item $F$ is a primitive of $f$, ie, $F'(x) =f(x)$ (which exists because $f$ is continuous)
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $\int_a^b f(t) dt = F(b)-F(a)$
+\end{claim}
+\begin{Proof}
+
+Since $G'(x)=f(x)$ (by part 1 of the theorem) and $F'(x)= f(x)$ (by definition), $F$ and $G$ can only differ in a constant, so:
+
+\begin{align*}
+G(x)= F(x)+C
+\end{align*}
+
+Since $G(a)= \int_a^a f(t) dt = 0$, then $G(a)= F(a)+C =0$,  so $C=-F(a)$. Replacing $C$ in the previous equation, we get:
+
+\begin{align*}
+G(x)= F(x)-F(a)
+\end{align*}
+
+That equation works for all $x ∈ I$. In particular it works for $x=b$, which gives us:
+
+\begin{align*}
+G(b)= F(b)-F(a)
+\\ \int_a^b f(t) dt= F(b)-F(a)
+\end{align*}
+
+\end{Proof}
+\end{property}
+
+
+
+\subsection{Mean value theorem for Integrals}
+
+\begin{property}{Mean value theorem for integrals (version 1, assuming the FTC)}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ is continuous on $I=[a,b]$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $∃c ∈ (a,b)$ such that $\int_a^b f(x) dx = f(c) (b-a)$
+\end{claim}
+\begin{Proof}
+Let $G$ be defined as before. Applying the MVT to $G$ in the interval $I$, we have $∃c ∈ (a,b)$ such that:
+\begin{align*}
+G'(c) &= \frac{G(b)-G(a)}{(b-a)}
+\\ f(c) &= \frac{G(b)-G(a)}{(b-a)}
+\\ f(c) &= \frac{G(b)}{(b-a)}
+\\ f(c) (b-a)  &=G(b)
+\\ f(c) (b-a)  &=\int_a^b f(x) dx
+\end{align*}
+
+\end{Proof}
+\end{property}
+
+
+\begin{property}{Mean value theorem for integrals (version 2, without assuming the FTC)}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ is continuous on $I=[a,b]$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $∃c ∈ (a,b)$ such that $\int_a^b f(x) dx = f(c) (b-a)$
+\end{claim}
+\begin{Proof}
+\begin{align*}
+  \mathcomment{prove me}
+\end{align*}
+\end{Proof}
+\end{property}
+
+\subsubsection{Common integral substitutions}
+
+\paragraph{$\int \frac{\sqrt{a^2 x^2-b^2}}{x} $}
+
+\paragraph{$\int \frac{\sqrt{a^2 x^2+b^2}}{x} $}
+
+\paragraph{$\int \frac{\sqrt{-a^2 x^2+b^2}}{x} $}

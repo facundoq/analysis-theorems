@@ -1,0 +1,298 @@
+
+
+\section{Derivative theorems}
+In the following subsections, $I$ stands for $\interval$ or $\intervalProper$
+
+\subsection{A continuous function in $I=\intervalProper$ is bounded (Extreme Value Theorem)}
+
+\begin{property}{A continuous function in $I=\intervalProper$ is bounded}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$  is continuous on $I$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $There exists f$
+\end{claim}
+\begin{Proof}
+
+\begin{align*}
+f'(y)
+\end{align*}
+\end{Proof}
+\end{property}
+
+\newcommand{\xz}{x_0}
+\subsection{Differentiability $→$ continuity}
+
+\begin{property}{Differentiability $→$ continuity}
+\begin{precondition}
+\begin{itemize}
+    \item $f$ is differentiable in $\intervalProper$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $f$ is continuous in $\interval$
+\end{claim}
+
+\begin{Proof}
+Let $f$ be differentiable  at $\xz$. Then:
+\begin{align*}
+\myfraclim{x}{\xz}{f(x)-f(\xz)}{x-\xz} &= f'(\xz)
+\end{align*}
+
+So:
+
+\begin{align*}
+ \mylim{x}{\xz}{f(x)-f(\xz)} &=\myfraclim{x}{\xz}{ (x-\xz) (f(x)-f(\xz))}{x-\xz}
+\\ &= (\mylim{x}{\xz}{x-\xz}) \myfraclim{x}{\xz}{ (f(x)-f(\xz))}{x-\xz}
+\\ &= (\mylim{x}{\xz}{x-\xz})   f'(\xz)
+\\ &= 0  f'(\xz)
+\\ &= 0
+\end{align*}
+
+Therefore:
+
+\end{Proof}
+\begin{align*}
+ \mylim{x}{\xz}{f(x)-f(\xz)} &=0
+ \\ \mylim{x}{\xz}{f(x)} &=f(\xz) \mathcomment{Limit of sum of functions, limit of a constant}
+\end{align*}
+\end{property}
+
+\subsection{$f'(x)=0$ at local maximums or minimums}
+
+\begin{property}{If $\xz$ is a local maximum then $f'(\xz)=0$}
+\begin{precondition}
+\begin{itemize}
+    \item $I=\interval$
+    \item $f'(\xz) exists$
+    \item $\xz$ is a local maximum in $I$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $f'(\xz)=0$
+\end{claim}
+\begin{Proof}
+
+Since $\xz$ is a local maximum in $I$, then $f(x) <f(\xz), \; ∀x ∈ I$. Therefore, taking the limit by considering only those $x ∈ I$:
+
+\begin{align*}
+L^+ &= \myfraclim{x}{\xz^+}{f(x)-f(\xz)}{x-\xz} ≤ 0 \mathcomment{since $f(x)-f(\xz) ≤ 0$ and $x-\xz>0$ }
+\end{align*}
+
+But also:
+
+\begin{align*}
+L^- &= \myfraclim{x}{\xz^-}{f(x)-f(\xz)}{x-\xz} ≥ 0 \mathcomment{since $f(x)-f(\xz) ≤ 0$ and $x-\xz<0$ }
+\end{align*}
+
+But, since $f'(\xz)=L$ exists, then $L=L^+=L^-$. This means that $L ≤ 0$ and $0 ≤ L$, which can only be true if $L=0$, that is if $f'(\xz)=0$
+
+Note: if $\xz=a$ or $\xz=b$ then
+\end{Proof}
+\end{property}
+
+The proof for minimums proceeds analogously, or can be done applying the result for maximums to the function $g(x)=-f(x)$, since all minimums in $f$ transform into maximums in $g$.
+
+
+\subsection{If a function is convex (concave) at a critical point $\xz$, then $\xz$ is a local maximum (minimum)}
+
+\begin{property}{If $f'(\xz)=0$ and $f''(\xz)<0$ then $\xz$ is a local maximum}
+\begin{precondition}
+\begin{itemize}
+    \item $f'(\xz)=0$
+    \item $f''(\xz)>0$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $\xz$ is a local maximum
+\end{claim}
+\begin{Proof}
+
+Since $f''(\xz)<0$, then $f''(x)<0$ in an interval $I=(\xz^a,\xz^b)$ around $\xz$. Therefore, the function $f'$ is \textit{increasing} in that interval. Given that $f'(\xz)=0$, and $f'$ is increasing in $I$, then $f'(x)<0$ if $x ∈ (\xz^a,\xz)$ and analogously $f'(x)>0$ if $(\xz,\xz^b)$.
+
+But this means $f$ is increasing in $(\xz^a,\xz)$ and decreasing in $(\xz,\xz^b)$. Therefore, $ \xz $ is a local maximum.
+
+\end{Proof}
+\end{property}
+
+The proof is analogous if the function is concave for minimums, or can be proved directly applying this result to the function $g(x)=-f(x)$.
+
+
+\subsection{Rolle's theorem}
+\begin{property}{Rolle's theorem}
+\begin{precondition}
+\begin{itemize}
+    \item $I = \intervalProper ≠ ∅$
+    \item $f(x)$ differentiable in $I$
+    \item $f(a)=f(b)$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $∃\xz ∈ I$ such that $f'(\xz)=0$
+\end{claim}
+\begin{Proof}
+
+We'll divide this in two cases:
+\begin{itemize}
+\item $f(x)=d$, where $d$ is a constant
+
+In this case, $f'(x)=0 \; ∀x ∈ I$, so since $I ≠ ∅$ we can pick any $\xz ∈ I$ (say, $c=(a+b)/2$)
+
+\item $f(x) ≠ d$
+
+Since $f$ is not a constant, it must have at least one local maximum or minimum in $I$. Assume $\xz ∈ I$ is a maximum or minimum. By the previous theorem, $f'(\xz)=0$, so the proof is done.
+
+\end{itemize}
+\end{Proof}
+\end{property}
+
+
+\subsection{Mean value theorem}
+\begin{property}{Mean value theorem}
+\begin{precondition}
+\begin{itemize}
+  \item $I = \intervalProper ≠ ∅$
+  \item $f(x)$ differentiable in $I$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $∃\xz ∈ I$ such that $f'(\xz)=\frac{f(b)-f(a)}{b-a}$
+\end{claim}
+\begin{Proof}
+
+This is similar to Rolle's theorem, but now we don't know if $f(a)=f(b)$, so we can't do exactly the same. Still, if we can twist the function $f$ a bit into a function $g$ for which  $g(a)=g(b)$ and apply Rolle's theorem to $g$, maybe that'll help things along. The simplest way to do this is to substract a line from $f$; which line? the one that goes from $(a,f(a))$ to $(b,f(b))$:
+
+\begin{align*}
+g(x)&= f(x)- \text{"line" from  $(a,f(a))$ to $(b,f(b))$}
+\\&= f(x)- \left[ f(a) + \frac{f(b)-f(a)}{b-a} (x-a)   \right]
+\end{align*}
+
+Note that:
+\begin{align*}
+g'(x)&= f'(x) - \frac{f(b)-f(a)}{b-a}
+\\ g(a)&= f(a)-f(a)+0=0
+\\ g(b)&=f(b)- \left[ f(a) + f(b)-f(a)  \right] = 0
+\end{align*}
+
+Let's apply Rolle's theorem to $g$ at $\xz$; then
+
+\begin{align*}
+&∃\xz ∈ I \mathtext{such that} g'(\xz)=0
+\\ &∃\xz ∈ I \mathtext{such that} f'(\xz)- \frac{f(b)-f(a)}{b-a}   =0
+\\ &∃\xz ∈ I \mathtext{such that} f'(\xz)=\frac{f(b)-f(a)}{b-a}
+\end{align*}
+
+\end{Proof}
+\end{property}
+
+
+\subsection{Cauchy's mean value theorem}
+\begin{property}{Cauchy's mean value theorem}
+\begin{precondition}
+\begin{itemize}
+  \item $I = \intervalProper ≠ ∅$
+  \item $f(x)$ differentiable in $I$
+  \item $g(x)$ differentiable in $I$
+  \item $g(b) ≠ g(a)$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $∃\xz ∈ I$ such that $\frac{f'(\xz)}{g'(\xz)}=\frac{f(b)-f(a)}{g(b)-g(a)}$
+\end{claim}
+\begin{Proof}
+This is a generalization of the mean value theorem, that simplifies to the former when $g(x)=x$, so that $g'(x)=1$, $g(a)=a$ and $g(b)=b$.
+
+Again we'll design a new function $h$ for which $h(a)=h(b)$ and use Rolle's theorem to do the proof. Define:
+
+\begin{align*}
+h(x)= (g(b)-g(a)) (f(x)-f(a))  - (f(b)-f(a)) (g(x)-g(a))
+\end{align*}
+
+Then:
+\begin{align*}
+h'(x) &= (g(b)-g(a)) f'(x)  - (f(b)-f(a)) g'(x)
+\\ h(a)  &= (g(b)-g(a)) 0 - (f(b)-f(a)) 0
+\\ &=0
+\\ h(b)  &= (g(b)-g(a)) (f(b)-f(a)) - (f(b)-f(a)) (g(b)-g(a))
+\\ &= 0
+\end{align*}
+
+Therefore $h(a)=h(b)$ and $h$ is differentiable in $I$, so we can apply Rolle's theorem to $h$ to get:
+\begin{align*}
+   ∃\xz ∈ I \mathtext{such that} & \hfill & h'(\xz) &=0
+\\ ∃\xz ∈ I \mathtext{such that} & \hfill & (g(b)-g(a)) f'(\xz)  - (f(b)-f(a)) g'(\xz) &=0
+\\ ∃\xz ∈ I \mathtext{such that} & \hfill & (g(b)-g(a)) f'(\xz)  &= + (f(b)-f(a)) g'(\xz)
+\\ ∃\xz ∈ I \mathtext{such that} & \hfill & \frac{f'(\xz)}{g'(\xz)}  &= \frac{f(b)-f(a)}{g(b)-g(a)}
+\end{align*}
+
+\end{Proof}
+\end{property}
+
+
+\subsection{Lagrange's remainder formula for Taylor's polynomial}
+\newcommand{\taylorInterval}{I_{a,x}}
+
+\begin{property}{Lagrange's remainder formula for Taylor's polynomial: Take 1, with Cauchy's MVT}
+\begin{precondition}
+\begin{itemize}
+    \item $f(x)$ $n$ times differentiable everywhere
+    \item $ \taylorInterval = \left[ min(a,x), max(a,x) \right]$
+    \item $p_a(x)= f(a) + \sumi^{n-1} f^i(a) (x-a)^i \inv{i!}$ is defined.
+    \item $∀c ∈ \taylorInterval r_a(x)= f^n(c) (x-a)^n \inv{n!}$ is defined.
+\end{itemize}
+\end{precondition}
+\begin{claim}
+  $∀x, \;  ∃c ∈ \taylorInterval$ such that $f(x)=p_a(x)+r_a(x)=f(a) + \sumi^{n-1} f^i(a) (x-a)^i \inv{i!} + f^n(c) (x-a)^n \inv{n!}$
+\end{claim}
+\begin{Proof}
+
+Let $g(t)=p_t(x)$. That is, $g$ is like $p$, but it is a function of $t$, the point where Taylor's polynomial is centered. Then $r_t(x)=f(x)-p_t(x)$ is the remainder or error of Taylor's polynomial when approximating $f(x)$ with the approximation centered at $t$.
+
+Now let's differentiate $g$ wrt $t$ (note that here $g$ is not a function of $x$!):
+
+\begin{align*}
+g'(t) &= (f(t) + \sumi^{n-1} f^i(t) (x-t)^i \inv{i!})'
+\\ &= f'(t) + \sumi^{n-1} f^i(t)  (x-t)^{i-1} i (-1) \inv{i!} + f^{i+1}(t) (x-t)^i \inv{i!}
+\\ &= f'(t) + \sumi^{n-1} f^i(t)  (x-t)^{i-1} (-1) \inv{i-1!} + f^{i+1}(t) (x-t)^i \inv{i!}
+\\ &= f'(t) + \sumi^{n-1} f^i(t)  (x-t)^{i-1} (-1) \inv{i-1!} + \sumi^{n-1} f^{i+1}(t) (x-t)^i \inv{i!}
+\\ &= f'(t) - \sumi^{n-1} f^i(t)  (x-t)^{i-1} \inv{i-1!} + \sumi^{n-1} f^{i+1}(t) (x-t)^i \inv{i!}
+\\ &= f'(t) - \sumi^{n-1} f^i(t)  (x-t)^{i-1} \inv{i-1!} + \sum_{i=2}^{n} f^{i}(t) (x-t)^{i-1} \inv{i-1!}
+\\ &= f'(t) - f^1(t)  (x-t)^{1-1}  -\sum_{i=2}^{n-1} f^i(t)  (x-t)^{i-1} \inv{(i-1)!} + \sum_{i=2}^{n-1} f^{i}(t) (x-t)^{i-1} \inv{(i-1)!} + f^{n}(t) (x-t)^{n-1} \inv{(n-1)!}
+\\ &= f'(t) - f'(t)  -\sum_{i=2}^{n-1} f^i(t)  (x-t)^{i-1} \inv{i-1!} + \sum_{i=2}^{n-1} f^{i}(t) (x-t)^{i-1} \inv{(i-1)!} + f^{n}(t) (x-t)^{n-1} \inv{(n-1)!}
+\\ &= f^{n}(t) (x-t)^{n-1} \inv{(n-1)!}
+\end{align*}
+
+This is quite nice! All the derivatives canceled each other, and we are left with just a single term. Now we'll use a simple trick to get the result we want. Note that our claim is similar to a mean value theorem in the sense that it is true for some $c ∈ \taylorInterval$. So maybe we can figure out another function $h$ to apply Cauchy's MVT to $g$ and $h$, and that will get us the result. That function is:
+
+\begin{align*}
+h(t)=(x-t)^n \mathcomment{($x$ is a constant here!)}
+\end{align*}
+
+Now, note that:
+\begin{align*}
+h(x) &=(x-x)^n =0 &  \hfill & g(x)=f_x(x)=f(x)
+\\ h(a) &=(x-a)^n &  \hfill &g(a)=f_a(x)
+\\ h'(t) &= -n (x-t)^{n-1} & \hfill &  g'(t)=f^{n}(t) (x-t)^{n-1} \inv{(n-1)!}
+\end{align*}
+
+So if we apply Cauchy's MVT to $h$ and $g$ as functions of $t$ in the interval $\taylorInterval$, we get (for a fixed x) that $∃c ∈ \taylorInterval$ such that:
+
+
+\begin{align*}
+    g'(c) (h(x)-h(a)) &= h'(c) (g(x)-g(a))
+\\  g'(c) (-h(a)) &= h'(c) (f(x)-p_a(x))
+\\  g'(c) (-(x-a)^n) &= h'(c) r_a(x)
+\\  g'(c) (-(x-a)^n) &= h'(c) r_a(x)
+\\  f^{n}(c) (x-c)^{n-1} \inv{(n-1)!} (-(x-a)^n) &= -n (x-c)^{n-1} r_a(x)
+\\  f^{n}(c) \inv{(n-1)!} (-(x-a)^n) &= -n r_a(x)
+\\  f^{n}(c) \inv{n!} (-(x-a)^n) &=-r_a(x)
+\\  f^{n}(c)  (x-a)^n \inv{n!} &=r_a(x)
+\\  f^{n}(c)  (x-a)^n \inv{n!} &=f(x)-p_a(x)
+\\  f^{n}(c)  (x-a)^n \inv{n!} +p_a(x) &=f(x)
+\end{align*}
+
+
+\end{Proof}
+\end{property}

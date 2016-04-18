@@ -1,0 +1,303 @@
+\section{Series}
+
+Note: Most of the following tests/theorems assume that series/sequences that start at $n=1$, but the proofs can be easily applied to $n$ starting at other values by considering a sequence such as $a_n=a_{m+k}$.
+
+Also, they assume that certain properties of a sequence hold from $n=1$ onwards; for example, $∀n>1, a_n>0$. This is to simplify the proofs.
+
+In practice, a property may only hold for $n$ greater than some $N$. This poses little trouble since a series can be split at $N$, so that:
+
+\begin{align*}
+  \sumainfty = \sumi^N a_i + \sum_N^{∞} a_i
+\end{align*}
+
+The first part of the series up to $N$ is finite, so there it is trivially convergent and we have no need to apply tests to it.
+The second part is the interesting one, and if we define $S_n= \sum_N^{n+N} a_i$, we get a sequence starting at $n=1$ that hold the partial sums of the interesting part of the series, so we can apply our theorem/test to that part only.
+
+
+\subsection{Divergence theorem}
+
+\begin{property}{If $\suman$ converges, then $\liman = 0$  }
+    \begin{precondition}
+        \begin{itemize}
+            \item $\suman = L$ (ie, converges)
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\liman = 0$
+    \end{claim}
+    \begin{Proof}
+        Let $S_n = \sumin a_i$. Then $\liman = \limn S_n = \limn S_{n+1} = L$
+
+        Now, notice that:
+        \begin{align*}
+           \limn S_{n+1}- S_n
+          &= \limn S_{n+1}- \limn S_n\\
+          &= L- L\\
+          &= 0
+        \end{align*}
+        But $S_{n+1}- S_n= a_{n+1}$. So:
+        \begin{align*}
+           \limn S_{n+1}- S_n
+          &= \limn a_{n+1}\\
+          &= \limn a_{n}\\
+          &= 0
+        \end{align*}
+    \end{Proof}
+\end{property}
+
+Corollary (Divergence Theorem):
+
+\begin{property}{If $\limn a_n \neq 0$ then $\limn \suman$ diverges }
+    \begin{precondition}
+        \begin{itemize}
+            \item $\limn a_n \neq 0$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\limn \suman$ diverges.
+    \end{claim}
+    \begin{Proof}
+        Suppose both $\limn a_n \neq 0$ and $\limn \suman$ converges. Then by the previous property, $\liman = 0$. So by contradiction, $\limn \suman$ must diverge.
+    \end{Proof}
+\end{property}
+
+
+
+\subsection{Comparison test}
+
+\begin{property}{If a series $\sumaninfty$ is bounded by $\sumbninfty$ and the latter converges, so does the former}
+    \begin{precondition}
+        \begin{itemize}
+            \item $0 ≤ a_n ≤ b_n$
+            \item $\sumbninfty = L$ (ie, converges)
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\sumaninfty$ converges
+    \end{claim}
+    \begin{Proof}
+        Define:
+        \begin{align*}
+          A_n=\suman && B_n=\sumbn && B=\limn B_n
+        \end{align*}
+        Since $0 ≤ a_n ≤ b_n$, we must have $A_n ≤ B_n$. Also, since $0≤b_n$, we have $B_n≤B$.
+        Therefore $A_n ≤B$, so $A_n$ is bounded above. Since $0≤a_n$, $A_n$ must form an increasing sequence.
+        Since a bounded above, increasing sequence converges, so does $A_n$, so $A=\limn A_n=\sumaninfty$ exists (ie, the series converges).
+
+
+    \end{Proof}
+\end{property}
+
+Corollary:
+
+\begin{property}{If a series $\sumaninfty$ is bounded by $\sumbninfty$ and the former diverges, so does the latter}
+    \begin{precondition}
+        \begin{itemize}
+            \item $0 ≤ a_n ≤ b_n$
+            \item $\sumaninfty$ diverges
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\sumbninfty$ diverges
+    \end{claim}
+    \begin{Proof}
+        Suppose $\sumbninfty$ converges. By the previous theorem, $\sumaninfty$ converges. But this contradicts our hypothesis. Therefore, $\sumbninfty$ diverges
+    \end{Proof}
+\end{property}
+
+\subsection{Limit comparison test}
+\newcommand{\ratioab}{\frac{a_n}{b_n}}
+\begin{property}{If the limit ratio between the terms of two series exists and is not 0, then either both converge or both diverge   }
+    \begin{precondition}
+        \begin{itemize}
+            \item $0 ≤ a_n$
+            \item $0 < b_n$
+            \item $0<\limn \ratioab=L$ (ie, converges to a number not zero)
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\sumaninfty$ converges iff $\sumbninfty$ converges
+    \end{claim}
+    \begin{Proof}
+
+        Since $0<L$, we can find $m,M ∈ \setreals$ such that:
+        \begin{equation*}
+          m<L<M
+        \end{equation*}
+        Now, since $\limn \ratioab=L$, we can find a number $N$ such that $\ratioab$ is really close to $L$, so much that:
+
+        \begin{equation*}
+          ∀n>N,\; m<\ratioab<M
+        \end{equation*}
+
+        This can be ensured by taking $ϵ = \min \setexp{ \abs{L-m}, \abs{M-L} }$ in the definition of the limit of a sequence.
+
+        Multiplying by $b_n$:
+
+        \begin{equation*}
+          ∀n>N,\; m b_n < a_n < M b_n
+        \end{equation*}
+
+        Since multiplying by a constant does not change the convergence properties of a series, this means that for $n≥N$, $b_n$ is bounded above by $a_n$, and viceversa.
+
+        Since we can split both series as:
+
+        \begin{align*}
+          \sumainfty = \sumi^N a_i + \sum_N^{∞} a_i && \sumbinfty = \sumi^N b_i + \sum_N^{∞} b_i
+        \end{align*}
+
+        And both $\sumi^N a_i$ and $\sumi^N b_i$ are finite,
+
+        Therefore, $m b_n < a_n$ and the comparison test, imply that if $a_n$ converges so does $b_n$. Since $a_n< M b_n$, again by the comparison test if $b_n$ converges so does $a_n$.
+
+
+        Finally:
+        \begin{equation*}
+          \mathtext{$a_n$ converges $⇔$ $b_n$ converges}
+        \end{equation*}
+
+    \end{Proof}
+\end{property}
+
+
+\subsection{Absolute converges implies (normal) convergence}
+
+\begin{property}{ Absolute converges implies (normal) convergence}
+    \begin{precondition}
+        \begin{itemize}
+            \item $\sumninfty \abs{a_n} = L$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\sumaninfty = M$
+    \end{claim}
+    \begin{Proof}
+        Given that
+        \begin{align*}
+             a_n &≤ \abs{a_n}
+          \\ a_n +\abs{a_n} &≤ \abs{a_n} + \abs{a_n}
+          \\ a_n +\abs{a_n} &≤ 2 \abs{a_n}
+          \\ a_n +\abs{a_n} &≤ 2 \abs{a_n}
+        \end{align*}
+        Define $b_n=a_n +\abs{a_n}$. Notice $0 ≤ b_n$.
+        Since $\smninfty \abs{a_n}$ converges, then $\smninfty 2\abs{a_n}$ converges as well. Since $0 ≤ b_n ≤ 2 \abs{a_n}$, by the comparison test $b_n$ converges as well.
+
+        Now, since $\smninfty b_n = \smninfty a_n +\abs{a_n} $ converges, and $\smninfty \abs{a_n}$ converges, then
+        we must have $\smninfty a_n$ converge as well.
+    \end{Proof}
+\end{property}
+
+\subsection{Integral test}
+
+
+\begin{property}{ $\int_{1}^{\infty} f(x)$ converges iff  $\sumninfty a_n$ converges }
+    \begin{precondition}
+        \begin{itemize}
+            \item $a_n=f(n)$ if $1 \leq n$
+            \item $f(x)>0$ if $1 \leq x$
+            \item $f(x)$ decreasing if $1 \leq x$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $I=\int_{1}^{\infty} f(x)$ converges iff  $S=\sumninfty a_n$ converges
+    \end{claim}
+    \begin{Proof}
+
+        Since $f$ is increasing, we have that if $x \in \brackets{i,i+1}$ then $a_{i+1}≤f(x)≤a_i$.
+        So if we define $I_n=\int_1^n f(x)$, $S_n=\sum_{i=1}^{n-1} a_i$ and $S'_n=\sum_{i=2}^{n} a_i$ then  $S'_n ≤ I_n ≤  S_n$
+        because $\int_1^n f(x) = \sumi^{n-1} \int_i^{i+1} f(x)$
+
+        Suppose $I$ converges. Since $S'_n ≤ I_n$, and $I=\limn I_n$, then $\limn S'_n$ converges. Now, since $S_n= a_1 + S'_n$, then $\limn S_n=S$ converges as well.
+
+        Conversely, suppose $S$ converges. Since $I_n ≤ S_n$, and $S=\limn S_n$, then $\limn I_n=I$ converges.
+
+    \end{Proof}
+\end{property}
+
+
+
+\subsection{Ratio test}
+
+\newcommand{\ratioan}{\frac{a_{n+1}}{a_n}}
+\begin{property}{ If $L=\limn \ratioan$ exists, then $L<1 → \sumaninfty$ converges, and $L>1 → \sumaninfty$ diverges}
+    \begin{precondition}
+        \begin{itemize}
+            \item $0 ≤ a_n$
+            \item $L=\limn \ratioan$ exists
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+      \begin{itemize}
+          \item $L<1 → \sumaninfty$ converges
+          \item $L>1 → \sumaninfty$ diverges
+      \end{itemize}
+    \end{claim}
+    \begin{Proof}
+        Case $L<1$:
+
+        The idea of this proof is that as $\ratioan$ gets close to $L$ so that all the $\ratioan$ are smaller than some $r<1$, then since $\ratioan<r$, we have $a_{n+1}<r a_n$, $a_{n+2}<r^2 a_n$, and so $a_{n+k}<r^k a_n$, so we can actually compare the series to a geometric series with $a<1$, which converges.
+
+        So, since $\limn \ratioan=L<1$, by density of the reals:
+        \begin{equation*}
+          ∃r, L<r<1
+        \end{equation*}
+
+        When $\ratioan$ gets really close to $L$,  we will have $\ratioan <r$. Formally
+
+        \begin{equation*}
+          ∃N,\; ∀n>N,\; $\ratian<r$
+        \end{equation*}
+
+        This implies:
+        \begin{equation*}
+          ∃N,\; ∀n>N,\; $a_{n+1}<r a_n$
+        \end{equation*}
+
+
+
+        \begin{align*}
+        \end{align*}
+    \end{Proof}
+\end{property}
+
+
+\subsection{Root test}
+
+\begin{property}{ $\int_{k}^{\infty} f(x)$ converges iff  $\sumaninfty$ converges }
+    \begin{precondition}
+        \begin{itemize}
+            \item $a_n=f(n)$ if $k \leq n$
+            \item $f(x)>0$ if $k \leq x$
+            \item $f(x)$ decreasing if $k \leq x$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\int_{k}^{\infty} f(x)$ converges iff  $\sumaninfty$ converges
+    \end{claim}
+    \begin{Proof}
+\mathcomment{prove me}
+        \begin{align*}
+        \end{align*}
+    \end{Proof}
+\end{property}
+
+
+\subsection{Alternating series test}
+
+\begin{property}{ Alternating series test }
+    \begin{precondition}
+        \begin{itemize}
+            \item $a_n=f(n)$ if $k \leq n$
+            \item $f(x)>0$ if $k \leq x$
+            \item $f(x)$ decreasing if $k \leq x$
+        \end{itemize}
+    \end{precondition}
+    \begin{claim}
+        $\int_{k}^{\infty} f(x)$ converges iff  $\sumaninfty$ converges
+    \end{claim}
+    \begin{Proof}
+      \mathcomment{prove me}
+        \begin{align*}
+        \end{align*}
+    \end{Proof}
+\end{property}

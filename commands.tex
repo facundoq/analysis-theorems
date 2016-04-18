@@ -1,0 +1,96 @@
+\newcommand{\intervalProper}{\left[a,b \right]}
+\newcommand{\interval}{(a,b)}
+
+\newcommand{\braces}[1]{\left{ #1 \right}}
+\newcommand{\brackets}[1]{\left[ #1 \right]}
+
+\newcommand{\idots}[2]{#1,\dots,#2}
+
+
+\newcommand{\setexp}[1]{ \{ \, #1 \, \} }
+\newcommand{\setdef}[2]{ \setexp{#1 \mid #2} }
+%\newcommand{\setdef}[2]{ \{ \, #1 \mid #2 \, \} }
+
+\newcommand{\limz}[1]{\lims{#1}{0}}
+
+\newcommand{\limzp}[1]{\lims{#1}{0^+}}
+\newcommand{\limzn}[1]{\lims{#1}{0^-}}
+
+\newcommand{\lims}[2]{\lim\limits_{#1 \rightarrow #2}}
+
+\newcommand{\mylim}[3]{\lims{#1}{#2} #3}
+\newcommand{\myfraclim}[4]{ \mylim{#1}{#2}{ \frac{#3}{#4}  } }
+
+\newcommand{\derLimit}[2]{\myfraclim{h}{0}{#1}{#2}}
+\newcommand{\derDefinition}{\derLimit{f(x+h)-f(x)}{h}}
+
+
+\newcommand{\liminfty}[1]{\lims{#1}{\infty}}
+\newcommand{\limninfty}{\liminfty{n}}
+\newcommand{\limn}{\limninfty}
+\newcommand{\liminftyn}[1]{\lims{#1}{-\infty}}
+\newcommand{\limninftyn}{\liminftyn{n}}
+
+\newcommand{\liman}{\limn a_n}
+
+\newcommand{\inv}[1]{\frac{1}{#1}}
+
+
+\newcommand{\mathtext}[1]{\; \text{#1} \; }
+
+\newcommand{\sumi}{\sum_{i=1}}
+\newcommand{\sumiz}{\sum_{i=0}}
+\newcommand{\sumin}{\sum_{i=1}^{n}}
+\newcommand{\suminz}{\sum_{i=0}^{n}}
+
+\newcommand{\sumikn}{\sum_{i=k}^{n}}
+\newcommand{\sumikinfty}{\sum_{i=k}^{\infty}}
+
+\newcommand{\suman}{\sumin a_i}
+\newcommand{\sumbn}{\sumin b_i}
+
+\newcommand{\suminfty}[1]{\sum_{#1=1}^{\infty}}
+\newcommand{\sumninfty}{\suminfty{n}}
+\newcommand{\sumaninfty}{\sumninfty a_n}
+\newcommand{\sumbninfty}{\sumninfty b_n}
+
+\newcommand{\mathcomment}[1]{ \hfill \quad \mathtext{\hfill #1} }
+
+\newcommand{\ginv}{g^{-1}}
+\newcommand{\ginvd}{g^{-1'}}
+
+\input{commands_custom_theorem.tex}
+\newtheorem*{property}{Property}
+\newtheorem*{theorem*}{Theorem}
+
+
+% better abs and norm
+
+
+%\usepackage{commath}
+
+ \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+ \DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+
+
+%Common Sets
+
+\newcommand{\setnaturals}{\mathbb{N}}
+\newcommand{\setintegers}{\mathbb{Z}}
+\newcommand{\setprimes}{\mathbb{P}}
+\newcommand{\setreals}{\mathbb{R}}
+\newcommand{\setrationals}{\mathbb{Q}}
+\newcommand{\setcomplex}{\mathbb{C}}
+\newcommand{\setirrationals}{\mathbb{I}}

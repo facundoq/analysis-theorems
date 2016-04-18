@@ -1,0 +1,311 @@
+\section{Derivatives properties}
+
+Note that the limits in these proofs are very different from those you evaluate when calculating, say, the derivative of an actual function like $x^2$ or $e^x$ by definition.
+
+While in both cases you have a $0/0$ limit to solve, when working with an actual function the difficulty lies in trying to rewrite the numerator to factor out an $h$ or do something equivalent.
+
+However, in the following cases you need to try to rewrite the numerator $f(x+h)-f(x)$ as a combination of other sorts of derivatives (depending on how $f$ is defined), and when you do the $h$ usually takes care of itself because it's absorbed by the definition of the other derivatives.
+
+\subsection{Linearity: multiply by a constant}
+
+\begin{property}{Linearity: multiply by a constant}
+    \begin{precondition}
+        \begin{itemize}
+          \item $f(x)=cg(x)$
+          \item $g'(x)  \mathtext{exists}$
+        \end{itemize}
+      \end{precondition}
+    \begin{claim}
+        $f'(x)=c g'(x)$
+    \end{claim}
+    \begin{Proof}
+      The main idea of this proof is to simply write down the limit definition of the derivative of $f$ and factor out the constant $c$ from the limit.
+      \begin{align*}
+      f'(x)&=\derDefinition
+      \\&=\derLimit{ c g(x+h) - c g(x)}{h}
+      =\derLimit{ c [g(x+h) -g(x)] }{h}
+      \\&=c \derLimit{  g(x+h) -g(x) }{h}
+      =c g'(x)
+      \end{align*}
+    \end{Proof}
+\end{property}
+
+
+\subsection{Linearity: sum of functions}
+
+\begin{property}{Linearity: sum of functions}
+\begin{precondition}
+    \begin{itemize}
+      \item $f(x)=g(x)+z(x)$
+      \item $g'(x) \mathtext{and} z'(x) \mathtext{exist}$
+    \end{itemize}
+  \end{precondition}
+\begin{claim}
+    $f'(x)=g'(x)+z'(x)$
+\end{claim}
+\begin{Proof}
+  The main idea of this proof is to simply write down the limit definition of the derivative of $f$ in terms of $g$ and $z$, and split the limit in two terms, one for the derivative of $g$ and the other for $z$.
+  \begin{align*}
+  f'(x)&=\derDefinition
+  \\&= \derLimit{ [ g(x+h) + z(x+h) ] - [g(x)+z(x)]}{h}
+  \\&=\derLimit{ [g(x+h) - g(x)] + [z(x+h) - z(x)]}{h}
+  \\&= \derLimit{ g(x+h) - g(x))}{h} + \derLimit{ z(x+h) - z(x)}{h}
+  \\&= g'(x) + z'(x)
+  \end{align*}
+\end{Proof}
+\end{property}
+
+
+\subsection{Product Rule}
+\begin{property}{Product Rule}
+\begin{precondition}
+    \begin{itemize}
+      \item $f(x)=g(x) z(x)$
+      \item $g'(x) \mathtext{and} z'(x) \mathtext{exist}$
+    \end{itemize}
+  \end{precondition}
+\begin{claim}
+    $f'(x)=g'(x) z(x) + z(x)' g(x)$
+\end{claim}
+\begin{Proof}
+The main idea of this proof is to add $- g(x+h) z(x) + g(x+h) z(x)$ to the numerator of the limit definition of the derivative. This will again allow us to split the limit into two terms, whose limits can be evaluated individually, and give the final result shown above.
+After splitting into the two terms and factoring, the terms will be slightly asymmetric, but that wont be a problem for the proof if you remember that for functions that are continuous at $x$, by definition the following holds: $\mylim{h}{0}{f(x+h)=f(x)}$.
+So when you see a $g(x+h)$ on one term and a $z(x)$ on the other that is asymmetric, don't worry,
+because if you take the $\lim\limits_{h \rightarrow 0}$ of the first, you actually get $g(x)$.
+
+\begin{align*}
+f'(x)&=\derDefinition
+\\&= \derLimit{ [g(x+h)  z(x+h) ] - [g(x) z(x)]}{h}
+\\&= \derLimit{ [g(x+h)  z(x+h) ] - [g(x) z(x)] - g(x+h) z(x) + g(x+h) z(x) }{h}
+\\&= \derLimit{ [g(x+h)  z(x+h) - g(x+h) z(x) ] + [ - g(x) z(x) + g(x+h) z(x)]  }{h}
+\\&= \derLimit{ [g(x+h)  z(x+h) - g(x+h) z(x) ] + [  g(x+h) z(x) - g(x) z(x)]  }{h}
+\\&= \derLimit{ g(x+h)  [z(x+h) - z(x) ] +   [g(x+h) - g(x)] z(x)]  }{h}
+\\&= \derLimit{ g(x+h)  [z(x+h) - z(x) ] +   [g(x+h) - g(x)] z(x)]  }{h}
+\\&= \derLimit{ g(x+h)  [z(x+h) - z(x) ]}{h} +  \derLimit{  [g(x+h) - g(x)] z(x) }{h}
+\\&= [\mylim{h}{0}{g(x+h)}] [\derLimit{ z(x+h) - z(x) }{h} ] + z(x) \derLimit{  g(x+h) - g(x)}{h}
+\\&= g(x)  z'(x) + z(x) g'(x)
+\end{align*}
+
+Note: This property will also allow us to prove a rule for the derivative of $\frac{g(x)}{z(x)}$.
+\end{Proof}
+\end{property}
+
+
+\subsection{Quotient rule: special case for $1/g(x)$}
+
+\begin{property}{Quotient rule: special case for $1/g(x)$}
+\begin{precondition}
+    \begin{itemize}
+      \item $f(x)=\inv{g(x)}$
+      \item $g(x) \neq 0$
+      \item $g'(x)    \mathtext{exists}$
+    \end{itemize}
+  \end{precondition}
+\begin{claim}
+    $f'(x)=\frac{-g'(x) }{g(x)^2}$
+\end{claim}
+\begin{Proof}
+
+Note: This derivative will allow us to easily prove a rule for the derivative of $\frac{g(x)}{z(x)}$.
+
+The main idea of this proof is to unify the denominators of the terms in $\inv{g(x+h)} - \inv{g(x)}$, and then from the result (1) identify the definition of $g'(x)$ and (2) find a $g(x)^2$ that can be factored out (actually $g(x+h) g(x)$, which is the same as $g(x)^2$ if $h \rightarrow 0$ ).
+
+
+\begin{align*}
+f'(x)&=\derDefinition = \derLimit{\inv{g(x+h)} - \inv{g(x)}}{h}
+\\ &= \derLimit{ \frac{g(x)-g(x+h)}{g(x+h)g(x)} }{h}
+\\ &= \derLimit{ g(x)-g(x+h) }{h g(x+h)g(x)}
+\\ &= \derLimit{ g(x)-g(x+h) }{h } \mylim{h}{0}{\inv{g(x+h)g(x)}}
+\\ &=- \derLimit{g(x+h)- g(x) }{h } \mylim{h}{0}{\inv{g(x+h)g(x)}}
+\\ &= -g'(x) \mylim{h}{0}{\inv{g(x+h)g(x)}}
+\\ &= -g'(x) \inv{g(x)g(x)}
+\\&= \frac{-g'(x) }{g(x)^2}
+\end{align*}
+\end{Proof}
+\end{property}
+
+\subsection{Quotient rule (full)}
+
+\begin{property}{Quotient rule (full)}
+\begin{precondition}
+    \begin{itemize}
+      \item $f(x)=\frac{g(x)}{z(x)}$
+      \item $z(x) \neq 0$
+      \item $ g'(x) \mathtext{and} z'(x) \mathtext{exists}$
+    \end{itemize}
+  \end{precondition}
+\begin{claim}
+    $f'(x)= \frac{g'(x) z(x)-z'(x) g(x)}{z(x)^2}$
+\end{claim}
+\begin{Proof}
+
+The main idea of this proof is that $\frac{a}{b} = a \inv{b}$, so we can solve the derivative of a quotient with the product rule we derived before.
+
+\begin{align*}
+f'(x)&= (\frac{g(x)}{z(x)})'= (g(x) \inv{z(x)})'
+\\&= g'(x) \inv{z(x)} + \inv{z(x)}' g(x)
+\\&= g'(x) \inv{z(x)} +  \frac{-z'(x) }{z(x)^2} g(x)
+\\&= g'(x) \inv{z(x)} \frac{z(x)}{z(x)} +  \frac{-z'(x) g(x) }{z(x)^2}
+\\&= g'(x) \inv{z(x)} \frac{z(x)}{z(x)} +  \frac{-z'(x) g(x) }{z(x)^2}
+\\&= \frac{g'(x) z(x)-z'(x) g(x)}{z(x)^2}
+\end{align*}
+\end{Proof}
+\end{property}
+
+
+\subsection{Chain rule}
+
+\begin{property}{Quotient rule (full)}
+\begin{precondition}
+    \begin{itemize}
+      \item $f(x)=z(g(x))$
+      \item $z'(g(x)) \mathtext{and} g'(x) \mathtext{exists}$
+    \end{itemize}
+  \end{precondition}
+\begin{claim}
+    $f'(x)= z'(g(x)) g'(x)$
+\end{claim}
+\begin{Proof}
+
+\newcommand{\dgh}{\Delta_h}
+First, a proof that's flawed because we can't be sure that $\dgh=g(x+h)-g(x) \neq 0$:
+
+\begin{align*}
+f'(x)&=\derDefinition = \derLimit{z(g(x+h)) - z(g(x))}{h}
+\\ &= \derLimit{z(g(x+h)) - z(g(x))}{h}  \frac{\dgh}{\dgh} \mathcomment{where $\dgh=g(x+h)-g(x)$ (wrong)}
+\\ &= \derLimit{z(g(x)+\dgh) - z(g(x))}{\dgh}  \derLimit{\dgh}{h}
+\\ &= \derLimit{z(g(x)+\dgh) - z(g(x))}{\dgh}  \derLimit{g(x+h)-g(x)}{h}
+\\ &= \derLimit{z(g(x)+\dgh) - z(g(x))}{\dgh}  g'(x)
+\\ &= z'(g(x))  g'(x) \mathcomment{(wrong)}
+\end{align*}
+
+The general idea of the proof is correct, but it doesn't work because $\derLimit{z(g(x)+\dgh) - z(g(x))}{\dgh}$ is undefined when $\dgh=0$, and because in the first term we are taking the limit of $h \rightarrow 0$, not $\dgh \rightarrow 0$.
+
+We'll fix the first problem by defining a function $ϕ(h)$ that is the same as that expression except when $\dgh=0$, and the second by doing a rigorous proof that in this case it's the same.
+
+\begin{equation*}
+ϕ(h)=
+\begin{cases}
+\frac{z(g(x)+\dgh) - z(g(x))}{\dgh}  &\mbox{if } \dgh \neq 0 \\
+z'(g(x))                                 &\mbox{if } \dgh = 0
+\end{cases}
+\end{equation*}
+
+Note that now $z(g(x)+\dgh) - z(g(x)) = ϕ(h) \dgh$, since it is true by definition when $\dgh \neq 0$, and when $\dgh=0$ both sides are $0$.
+
+Then:
+
+
+\begin{align*}
+f'(x)&=\derDefinition = \derLimit{z(g(x+h)) - z(g(x))}{h}
+\\ &= \derLimit{z(g(x)+\dgh) - z(g(x))}{h}
+\\ &= \derLimit{ϕ(h) \dgh}{h}
+\\ &= \mylim{h}{0}{ϕ(h)} \derLimit{\dgh)}{h}
+\\ &= \mylim{h}{0}{ϕ(h)} g'(x)
+\end{align*}
+
+Now all we need to prove is that  $\mylim{h}{0}{ϕ(h)} = z'(g(x))$. Since the quantity in the left hand side is a limit, we'll proof this equality using the limit definition of $z'(g(x))$ (we can only do this because we put as a precondition that $z$ is differentiable at $g(x)$), which is:
+
+\begin{align*}
+% \label{chain_differentiable_z}
+&∀ϵ'>0, ∃δ'>0, ∀h, \; 0<|h - g(x)| < δ' \\
+&→ | \frac{z(g(x)+h)-z(g(x))}{h} - z'(g(x))| < ϵ'
+\end{align*}
+
+Now, we need a similar proof for $\mylim{h}{0}{ϕ(h)}$. Given $ϵ>0$, we need a $δ>0$ such that:
+
+\begin{align*}
+& ∀h \; 0<|h - g(x)| < δ \\
+&→ | ϕ(h) - z'(g(x))| < ϵ
+\end{align*}
+
+When $\dgh=0$ this is trivially true, because we defined $ϕ(h)=z'(g(x))$ for that case, basically any $δ$ will do.
+
+When $\dgh \neq 0$ we need a $δ>0$ such that:
+\begin{align*}
+%\label{chain_dgh}
+& ∀h \; 0<|h - g(x)| < δ \\
+& → | \frac{z(g(x)+\dgh) - z(g(x))}{\dgh} - z'(g(x))| < ϵ
+\end{align*}
+
+Note that this is almost what we got before, only that now we have $\dgh$ instead of $h$, so it would seem the $δ'$ from the limit definition of $z'(g(x))$ won't work directly.
+
+We can get this to work anyway using the continuity of $g$ at $x$; choosing $ϵ''=δ'$, we have:
+
+\begin{align*}
+%\label{chain_continuity_g}
+ ∃δ'', ∀h \;  0 < |h| < δ'' → | g(x+h)-g(x)| < ϵ''
+\end{align*}
+
+Therefore, we have the following chain of implications:
+
+\begin{align*}
+& ∃δ'', 0 < |h| < δ''  → | g(x+h)-g(x)| < e'' \mathcomment{(or  $|\dgh| < δ'$)}
+\\& → 0<|\dgh| < δ' \mathcomment{because we are dealing with the case $\dgh \neq 0$}
+\\& → |\frac{z(g(x)+\dgh) - z(g(x))}{\dgh} - z'(g(x))| < ϵ
+\\& → | ϕ(h) - z'(g(x))| < ϵ \mathcomment{because we are dealing with the case $\dgh \neq 0$}
+\end{align*}
+
+So the $δ$ we were looking for is just $δ''$. With that, we have proven $\mylim{h}{0}{ϕ(h)} = z'(g(x))$
+
+And so finally we can say that:
+
+\begin{align*}
+f'(x)&= \mylim{h}{0}{ϕ(h)} g'(x)
+\\ &= z'(g(x)) g'(x)
+\end{align*}
+\end{Proof}
+\end{property}
+
+\subsection{Inverse function rule}
+
+\begin{property}{Inverse function rule (take 1: by definition)}
+\begin{precondition}
+\begin{itemize}
+    \item $f(y)=g^{-1}(y)$
+    \item $g'(x) \mathtext{exists}$
+    \item $g'(x) \neq 0$
+    \item $y=g(x)$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+    $f'(y)= \inv{g'(f(y))}$
+\end{claim}
+\begin{Proof}
+
+\begin{align*}
+f'(y)&=\derLimit{f(y+h) - f(y)}{h}
+\\&=  \derLimit{\ginv(y+h) - \ginv(y)}{h}
+\\&= \myfraclim{y'}{y}{\ginv(y') - \ginv(y)}{y'-y} \mathcomment{Substituting h by y'-y}
+\\&= \myfraclim{x'}{x}{x' - x}{g(x')-g(x)} \mathcomment{a bit of handwaving using the fact that y=g(x)}
+\\&= \inv{\myfraclim{x'}{x}{g(x')-g(x)}{x' - x}}  \mathcomment{because we know the limit in the denominator exists and it's not 0 (precondition)}
+\\&= \inv{g'(x)}  \mathcomment{by definition}
+\\&= \inv{g'(f(y))}
+\end{align*}
+\end{Proof}
+\end{property}
+
+
+\begin{property}{Inverse function rule. Take 2: by implicit differentiation using the chain rule}
+\begin{precondition}
+\begin{itemize}
+\item $f(x)=g^{-1}(x)$
+\item $g'(x) \mathtext{exists}$
+\item $g'(x) \neq 0$
+\end{itemize}
+\end{precondition}
+\begin{claim}
+$f'(x)= \inv{g'(f(x))}$
+\end{claim}
+
+\begin{Proof}
+\begin{align*}
+g(f(x))&=x
+g(\ginv(x))=x
+\\  (g(\ginv(x)))'&=x' \mathcomment{Deriving both sides}
+\\  g'(\ginv(x)) \ginvd(x)&=1
+\\  \ginvd(x)&=\inv{g'(\ginv(x))} \mathcomment{By the chain rule}
+\\  f(x)&=\inv{g'(f(x))}
+\end{align*}
+\end{Proof}
+\end{property}

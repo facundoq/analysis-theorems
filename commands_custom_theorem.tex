@@ -1,0 +1,30 @@
+\newlength\Thmindent
+\setlength\Thmindent{20pt}
+
+\newtheoremstyle{break}
+  {\topsep}{\topsep}%
+  {\itshape}{}%
+  {\bfseries}{}%
+  {\newline}{}%
+  
+\theoremstyle{break}
+
+\newenvironment{precondition}
+{\par\medskip\adjustwidth{\Thmindent}{}\normalfont\textbf{Preconditions:}\par\nobreak}
+{\endadjustwidth}
+\newenvironment{claim}
+{\par\medskip\adjustwidth{\Thmindent}{}\normalfont\textbf{Claim:}}
+{\endadjustwidth}
+
+\declaretheoremstyle[
+spaceabove=0pt,spacebelow=0pt,
+preheadhook=\adjustwidth{\Thmindent}{},
+prefoothook=\endadjustwidth,
+headpunct=:,
+numbered=no,
+qed=\qedsymbol
+]{proof}
+\declaretheorem[style=proof]{Proof}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}

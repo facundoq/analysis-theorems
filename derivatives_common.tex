@@ -1,0 +1,141 @@
+\section{Derivatives of common functions}
+
+\subsection{Constant function $f(x)=c \rightarrow f'(x)=0$}
+
+\begin{align*}
+f'(x)&=\derDefinition
+\\ &= \derLimit{c-c}{h}
+= \derLimit{0}{h}
+= 0
+\end{align*}
+
+\subsection{Polinomial: $(\sum_{i=0}{n} a_i x^i)'=\sum_{i=1}{n} a_i i x^{i-1} $}
+
+Easy by induction
+
+\subsection{Exponential: $(e^x)'=e^x$}
+
+\begin{align*}
+f'(x)&=\derDefinition
+\\ &= \derLimit{e^{x+h}-e^x}{h}
+\\ &= \derLimit{e^x (e^h-1)}{h}
+\\ &= e^x \derLimit{ e^h-1}{h}
+\\ &= e^x
+\end{align*}
+
+\subsection{Logarithm: $ln'(x) = \inv{x} \quad (x>0) $}
+
+\subsubsection{Take 1, by definition }
+
+
+
+\begin{align*}
+f'(x)&=\derDefinition
+\\&= \derLimit{ln(x+h)-ln(x)}{h}
+\\&= \derLimit{ln( \frac{x+h}{x})}{h}
+\\&= \derLimit{ln(1+ \frac{h}{x} )}{h}
+\\&= \derLimit{ln(1+ \frac{h}{x})}{h}
+\\&= \derLimit{ln(1+ \frac{h}{x}) x }{x h}  \mathcomment{because} x>0
+\\&= \inv{x} \mylim{h}{0}{ln(1+ \frac{h}{x}) \frac{x}{h} }
+\\&= \mylim{u}{\infty}{ \frac{ln(1+ \inv{u}) u}{x}  }  \mathcomment{substitution} u=\frac{x}{h}, \; h \rightarrow 0 \Rightarrow u \rightarrow \infty
+\\&= \inv{x} \mylim{u}{\infty}{ ln(1+ \inv{u}) u }
+\\&= \inv{x} \mylim{u}{\infty}{ ln( (1+ \inv{u})^u ) }
+\\&= \inv{x} ln(\mylim{u}{\infty}{  (1+ \inv{u})^u })
+\\&= \inv{x} ln(e) \mathcomment{by definition of e}
+\\&= \inv{x}
+\end{align*}
+
+\subsubsection{Take 2, with implicit derivation}
+
+Defining $y=exp(x)$:
+
+\begin{align*}
+ln(y)&=x
+\\ ln(y)'&=x' \mathcomment{deriving both sides}
+\\ ln(y)'&=1 \mathcomment{if $f(x)=x, f'(x)=1$}
+\\ ln'(y) y'&=1 \mathcomment{chain rule}
+\\ ln'(y) y &=1 \mathcomment{since $y=exp(x) \rightarrow y'=exp'(x)=exp(x)=y$}
+\\ ln'(y) &=\inv{y} \mathcomment{ $y \neq 0$ because $exp(x)>0$}
+\end{align*}
+
+(all derivatives taken with respect to x)
+
+\subsubsection{Take 3, using the inverse function derivative property}
+\begin{align*}
+ln(x)' &= \inv{ exp'(ln(x))} \mathcomment{$\ln$ is the inverse of $exp$, ie, $exp(ln(x))=x$}
+\\ &= \inv{exp(ln(x))}  \mathcomment{because} exp'(y)=exp(y)
+\\ &= \inv{x}
+\end{align*}
+
+\subsection{Inverse trigonometric functions}
+
+\subsubsection{asin(x)}
+\begin{align*}
+asin(y)' &= \inv{ sin'(asin(y))}
+\\&= \inv{ cos(asin(y))}
+\\&= \inv{ \sqrt{1- (sin(asin(y)))^2}} \mathcomment{ because $cos(x) = \sqrt{1-sin(x)^2}$}
+\\&= \inv{ \sqrt{1- y^2}}
+\end{align*}
+
+\subsubsection{acos(x)}
+
+\begin{align*}
+acos(y)' &= \inv{ cos'(acos(y))}
+\\&= \inv{ -sin(acos(y))}
+\\&= \inv{ -\sqrt{1- (cos(acos(y)))^2}} \mathcomment{ because $sin(x) = \sqrt{1-cos(x)^2}$}
+\\&= \inv{ -\sqrt{1 - y^2}}
+\\&= -\inv{\sqrt{1 - y^2}}
+\end{align*}
+
+\subsubsection{atan(x)}
+
+\begin{align*}
+atan(y)' &= \inv{ tan'(atan(y))}
+\\&= \inv{ 1+tan(atan(y))^2} \mathcomment{ because $tan'(x) = \inv{cos(x)^2}= 1+tan(x)^2 $}
+\\&=\inv{ 1+y^2}
+\end{align*}
+
+
+\subsection{Hiperbolic functions}
+
+
+
+\subsubsection{senh(x)}
+\begin{align*}
+sinh(x)' &= (\frac{e^x-e^{-x}}{2})'
+\\&= \frac{e^x+e^{-x}}{2}
+\\&= cosh(x)
+\end{align*}
+
+\subsubsection{cosh(x)}
+\begin{align*}
+cosh(x)' &= (\frac{e^x+e^{-x}}{2})'
+\\&= \frac{e^x-e^{-x}}{2}
+\\&= sinh(x)
+\end{align*}
+
+\subsubsection{tanh(x)}
+
+Note first:
+\begin{align*}
+sinh(x)^2 &= (\frac{e^x-e^{-x}}{2})^2
+\\&= \frac{(e^x-e^{-x})(e^x-e^{-x})}{2^2}
+\\&= \frac{e^{2x}-1-1+e^{2x}}{2^2}
+\\&= \frac{2 e^{2x}-2}{2^2}
+\\&= \frac{e^{2x}-1}{2}
+\end{align*}
+
+Similarly:
+\begin{align*}
+sinh(x)^2 &= (\frac{e^x+e^{-x}}{2})^2
+\\&= \frac{e^{2x}+1}{2}
+\end{align*}
+
+
+\begin{align*}
+tanh(x)' &= \frac{sinh(x)}{cosh(x)}'
+\\&= \frac{cosh(x)^2-sinh(x)^2}{sinh(x)^2}
+\\&= \frac{cosh(x)^2}{sinh(x)^2}-1
+\\&= \frac{1}{tanh(x)^2}-1
+\\&= cotanh(x)^2-1
+\end{align*}
